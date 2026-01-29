@@ -1,0 +1,22 @@
+services:
+    ### Redis ###
+    bot_redis: 
+      container_name: bot_redis
+      image: redis
+      command: /bin/sh -c "redis-server --requirepass $$REDIS_PASSWORD"
+      env_file:
+        - .env
+      ports:
+        - "6380:6379"
+      networks:
+        - app
+      volumes:
+        - bot_redis_data:/data
+
+volumes:
+  bot_redis_data:
+  bot_db_data:
+
+networks:
+  app:
+    driver: bridge
