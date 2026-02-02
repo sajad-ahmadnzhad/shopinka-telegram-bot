@@ -5,6 +5,7 @@ import { helpModule } from '../help/help.module';
 import { authModule } from '../auth/auth.module';
 import { addressModule } from '../address/address.module';
 import { forceJoinModule } from '../force-join/force-join.module';
+import { productModule } from '../products/product.module';
 
 export function coreModule(bot: Bot<BotContext>) {
   startModule(bot);
@@ -12,4 +13,5 @@ export function coreModule(bot: Bot<BotContext>) {
   authModule(bot);
   addressModule(bot);
   forceJoinModule(bot);
+  productModule(bot);
 }
