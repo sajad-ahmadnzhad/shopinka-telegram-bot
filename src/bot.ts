@@ -4,6 +4,7 @@ import { env } from './configs/env.config';
 import { RedisAdapter } from '@grammyjs/storage-redis';
 import { redis } from './configs/redis.config';
 import { forceJoinMiddleware } from './common/middlewares/force-join.middleware';
+import './modules/force-join/force-join.scheduler';
 
 export const bot = new Bot<BotContext>(env.BOT_TOKEN);
 
@@ -18,4 +19,4 @@ bot.use(
   }),
 );
 
-bot.use(forceJoinMiddleware)
+bot.use(forceJoinMiddleware);

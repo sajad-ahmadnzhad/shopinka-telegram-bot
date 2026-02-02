@@ -39,3 +39,13 @@ export function handleApiErrorResponse(error: AxiosError): IApiErrorResponse {
 
   return { isSuccess, message };
 }
+
+export function msToTime(ms: number): string {
+  const totalSeconds = Math.floor(ms / 1000);
+
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? minutes : '0' + minutes}:${seconds > 9 ? seconds : '0' + seconds}`;
+}

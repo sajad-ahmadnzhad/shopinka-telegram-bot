@@ -9,6 +9,6 @@ export const cancelInlineKeyboard = () => new InlineKeyboard().text('لغو', Sh
 
 export const skipInlineKeyboard = () => new InlineKeyboard().text('رد شدن', SharedCallbackData.Skip);
 
-export const backInlineKeyboard = () => new InlineKeyboard().text('برگشت', SharedCallbackData.Back);
+export const backInlineKeyboard = (callbackData: string = SharedCallbackData.Back) => new InlineKeyboard().text('برگشت', callbackData);
 
 export const backToListInlineKeyboard = () => new InlineKeyboard().text('برگشت به لیست', SharedCallbackData.BackToList);

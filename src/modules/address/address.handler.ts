@@ -5,7 +5,7 @@ import { createAddressCallbacks } from './callbacks/create-address.callback';
 import { listOfAddressesCallback } from './callbacks/list-of-addresses.callback';
 import { removeAddressCallbacks } from './callbacks/remove-address.callback';
 import { updateAddressCallbacks } from './callbacks/update-address.callback';
-import { handelUpdateAddressFlow } from './flows/update-address.flow';
+import { handleUpdateAddressFlow } from './flows/update-address.flow';
 import { detailsAddressCallbacks } from './callbacks/details-address.callback';
 import { toggleDefaultAddressCallbacks } from './callbacks/toggle-default-address.callback';
 
@@ -22,7 +22,7 @@ export function addressHandler(bot: Bot<BotContext>) {
 
   //* Update address handlers
   updateAddressCallbacks(bot);
-  handelUpdateAddressFlow(bot);
+  handleUpdateAddressFlow(bot);
 
   //* Set default address handlers
   toggleDefaultAddressCallbacks(bot);

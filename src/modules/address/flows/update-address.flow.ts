@@ -5,7 +5,7 @@ import { updateAddress } from '../../../api/address.api';
 import { addressSchema } from '../address.schema';
 import { validateStep } from '../../../common/utils/validate-schema.utils';
 
-export async function handelUpdateAddressFlow(bot: Bot<BotContext>) {
+export async function handleUpdateAddressFlow(bot: Bot<BotContext>) {
   bot.on('message:text', async (ctx, next) => {
     const { step, data } = ctx.session;
     const { text } = ctx.message;
