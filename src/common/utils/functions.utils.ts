@@ -49,3 +49,17 @@ export function msToTime(ms: number): string {
 
   return `${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? minutes : '0' + minutes}:${seconds > 9 ? seconds : '0' + seconds}`;
 }
+
+export function normalizeQuery(object: Record<string, string>): string {
+  const filterValues = Object.values(object);
+  const filterKeys = Object.keys(object);
+
+  const query = filterKeys
+    .map((key) => {
+      if (object[key] === filterValues[0]) return `?${key}=${object[key]}`;
+      return `&${key}=${object[key]}`;
+    })
+    .join('');
+
+  return query;
+}
