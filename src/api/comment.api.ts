@@ -12,3 +12,13 @@ export async function getComments(filters: Record<string, string>): Promise<TApi
     return handleApiErrorResponse(error);
   }
 }
+
+export async function postComment(accessToken: string, comment: any): Promise<TApiResponse> {
+  try {
+    const response = await http.post('/comment', comment, { headers: { Authorization: `bearer ${accessToken}` } });
+
+    return handleApiSuccessResponse(response);
+  } catch (error) {
+    return handleApiErrorResponse(error);
+  }
+}
