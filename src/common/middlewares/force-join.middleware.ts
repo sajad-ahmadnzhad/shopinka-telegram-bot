@@ -8,7 +8,7 @@ export const forceJoinMiddleware = async (ctx: BotContext, next: () => Promise<v
   const channels = await getActiveChannels();
   if (!channels.length) return next();
 
-  if (ctx.chat.type == 'channel') return await next();
+  if (ctx.chat?.type == 'channel') return await next();
 
   for (const ch of channels) {
     try {
