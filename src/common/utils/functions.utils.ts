@@ -1,4 +1,5 @@
 import { AxiosError, AxiosResponse } from 'axios';
+import { htmlToText } from 'html-to-text';
 
 export function isOkStatusCode(statusCode: number) {
   if (statusCode > 400) return true;
@@ -62,4 +63,10 @@ export function normalizeQuery(object: Record<string, string>): string {
     .join('');
 
   return query;
+}
+
+export function sanitizeTelegramText(html?: string) {
+  if (!html) return '';
+
+  return htmlToText(html);
 }
