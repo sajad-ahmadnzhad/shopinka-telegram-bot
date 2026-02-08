@@ -66,7 +66,7 @@ export function handleProductInlineQuery(bot: Bot<BotContext>) {
 
     const { data: product, isSuccess, message } = await getOneProduct(productId);
 
-    if (!isSuccess) return ctx.api.sendMessage(ctx.from.id, message);
+    if (!isSuccess) return await ctx.api.sendMessage(ctx.from.id, message);
 
     let caption = `
 🛍 **${product.name}**
@@ -88,13 +88,13 @@ export function handleProductInlineQuery(bot: Bot<BotContext>) {
 🏷 **تگ‌ها:**
 ${product.tags
   .slice(0, 5)
-  .map((t) => `#${t.name}`)
+  .map((t) => `#${t.name.replaceAll(' ', '_')}`)
   .join('  ')}
 `;
     }
 
     if (product.shortDescription) {
-      caption += `\n
+      caption += `
 📝 **توضیح کوتاه:**
 ${truncateText(sanitizeTelegramText(product.shortDescription), 300)}
 `;
