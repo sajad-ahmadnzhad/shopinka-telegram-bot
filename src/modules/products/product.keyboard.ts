@@ -1,4 +1,4 @@
-import { InlineKeyboard } from 'grammy';
+import { InlineKeyboard, Keyboard } from 'grammy';
 import { ProductCallbackData } from './enums/product-callback-data.enum';
 import { closeInlineKeyboard } from '../../common/keyboards/shared.keyboard';
 
@@ -6,17 +6,17 @@ export const productMenuKeyboard = () => new InlineKeyboard().switchInlineCurren
 
 export const productDetailKeyboard = (product: any, isFavorite: boolean) => {
   const inlineKeyboard = new InlineKeyboard()
-    .text('ادامه', `${ProductCallbackData.Continue}${product.id}`)
+    .text('ادامه⬅️', `${ProductCallbackData.Continue}${product.id}`)
     .text(
-      isFavorite ? 'حذف از علاقه مندی' : 'افزودن به علاقه مندی',
+      isFavorite ? '❌حذف از علاقه‌مندی' : '❤️اضافه به علاقه‌مندی',
       isFavorite ? `${ProductCallbackData.RemoveFromFavorite}${product.id}` : `${ProductCallbackData.AddToFavorite}${product.id}`,
     )
     .row()
-    .url('آدرس در سایت', `https://shopinka.ir/product/${product.slug}`)
-    .text('نظرات', `${ProductCallbackData.Comments}${product.id}`)
+    .url('🔗آدرس در سایت', `https://shopinka.ir/product/${product.slug}`)
+    .text('💬نظرات', `${ProductCallbackData.Comments}${product.id}`)
     .row();
 
-  if (product.galleryImages?.length) inlineKeyboard.text('عکس های بیشتر', `${ProductCallbackData.MoreImages}${product.id}`);
+  if (product.galleryImages?.length) inlineKeyboard.text('📸عکس های بیشتر', `${ProductCallbackData.MoreImages}${product.id}`);
 
   return inlineKeyboard;
 };
